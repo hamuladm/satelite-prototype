@@ -1,0 +1,2 @@
+../Core/Src/mcp9808.c:11:23:mcp9808_init	32	static
+../Core/Src/mcp9808.c:19:7:mcp9808_read_temp	32	static
