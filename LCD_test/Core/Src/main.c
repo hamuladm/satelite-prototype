@@ -23,6 +23,8 @@
 /* USER CODE BEGIN Includes */
 #include "i2c-lcd.h"
 #include "mcp9808.h"
+#include "BMP280_STM32.h"
+
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -43,6 +45,7 @@
 /* Private variables ---------------------------------------------------------*/
 I2C_HandleTypeDef hi2c1;
 I2C_HandleTypeDef hi2c2;
+I2C_HandleTypeDef hi2c3;
 
 /* USER CODE BEGIN PV */
 
@@ -53,13 +56,14 @@ void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
 static void MX_I2C1_Init(void);
 static void MX_I2C2_Init(void);
+static void MX_I2C3_Init(void);
 /* USER CODE BEGIN PFP */
 
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-
+float Temperature, Pressure, Humidity;
 /* USER CODE END 0 */
 
 /**
@@ -92,17 +96,13 @@ int main(void)
   MX_GPIO_Init();
   MX_I2C1_Init();
   MX_I2C2_Init();
+  MX_I2C3_Init();
   /* USER CODE BEGIN 2 */
 
   MCP9808_HandleTypeDef mcp9808 = mcp9808_init();
   lcd_init();
-
+  int ret = BMP280_Config(OSRS_16, OSRS_16, OSRS_OFF, MODE_NORMAL, T_SB_1000, IIR_16);
   char msgstr[64];
-//  uint16_t devAddress = 0x30;
-//  uint8_t tempReg = 0x05u;
-//  uint8_t dataReg[2];
-//  float tempVal = 0;
-//  float tempValDec;
 
   /* USER CODE END 2 */
 
@@ -110,28 +110,18 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-//	  HAL_I2C_Master_Transmit(&hi2c2, devAddress, &tempReg, 1, 2000);
-//	  HAL_I2C_Master_Receive(&hi2c2, devAddress | 0x01, dataReg, 2, 2000);
-//
-//	  tempValDec = 0.0625;
-//	  tempVal = 0;
-//
-//	  for (int i = 0; i < 8; i++){
-//		  tempVal += ((dataReg[1] >> i) & 0x00000001) * tempValDec;
-//		  tempValDec *= 2;
-//	  }
-//	  for (int i = 0; i < 4; i++){
-//		  tempVal += ((dataReg[0] >> i) & 0x00000001) * tempValDec;
-//		  tempValDec *= 2;
-//	  }
 
 	float temp = mcp9808_read_temp(&mcp9808);
+	BMP280_Measure();
+	HAL_Delay(500);
+	char data[255] = "";
 
-    sprintf(msgstr, "T is %f", temp);
+    sprintf(msgstr, "%f Pa", (float)Pressure);
+    sprintf(data, "%f C", (float)Temperature);
     lcd_put_cur(0, 0);
     lcd_send_string(msgstr);
     lcd_put_cur(1, 0);
-    lcd_send_string("Peremoga byde!");
+    lcd_send_string(data);
     HAL_Delay(1000);
     lcd_clear();
     mcp9808.value = 0;
@@ -260,6 +250,40 @@ static void MX_I2C2_Init(void)
 }
 
 /**
+  * @brief I2C3 Initialization Function
+  * @param None
+  * @retval None
+  */
+static void MX_I2C3_Init(void)
+{
+
+  /* USER CODE BEGIN I2C3_Init 0 */
+
+  /* USER CODE END I2C3_Init 0 */
+
+  /* USER CODE BEGIN I2C3_Init 1 */
+
+  /* USER CODE END I2C3_Init 1 */
+  hi2c3.Instance = I2C3;
+  hi2c3.Init.ClockSpeed = 100000;
+  hi2c3.Init.DutyCycle = I2C_DUTYCYCLE_2;
+  hi2c3.Init.OwnAddress1 = 0;
+  hi2c3.Init.AddressingMode = I2C_ADDRESSINGMODE_7BIT;
+  hi2c3.Init.DualAddressMode = I2C_DUALADDRESS_DISABLE;
+  hi2c3.Init.OwnAddress2 = 0;
+  hi2c3.Init.GeneralCallMode = I2C_GENERALCALL_DISABLE;
+  hi2c3.Init.NoStretchMode = I2C_NOSTRETCH_DISABLE;
+  if (HAL_I2C_Init(&hi2c3) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /* USER CODE BEGIN I2C3_Init 2 */
+
+  /* USER CODE END I2C3_Init 2 */
+
+}
+
+/**
   * @brief GPIO Initialization Function
   * @param None
   * @retval None
@@ -272,6 +296,7 @@ static void MX_GPIO_Init(void)
   /* GPIO Ports Clock Enable */
   __HAL_RCC_GPIOH_CLK_ENABLE();
   __HAL_RCC_GPIOB_CLK_ENABLE();
+  __HAL_RCC_GPIOC_CLK_ENABLE();
   __HAL_RCC_GPIOA_CLK_ENABLE();
 
 /* USER CODE BEGIN MX_GPIO_Init_2 */
