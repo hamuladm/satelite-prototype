@@ -1,28 +1,134 @@
-16:23:33 **** Incremental Build of configuration Debug for project LCD_test ****
+16:43:17 **** Incremental Build of configuration Debug for project LCD_test ****
 make -j8 all 
 arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
-../Core/Src/main.c: In function 'main':
-../Core/Src/main.c:114:15: warning: unused variable 'temp' [-Wunused-variable]
-  114 |         float temp = mcp9808_read_temp(&mcp9808);
-      |               ^~~~
-../Core/Src/main.c:104:7: warning: unused variable 'ret' [-Wunused-variable]
-  104 |   int ret = BMP280_Config(OSRS_16, OSRS_16, OSRS_OFF, MODE_NORMAL, T_SB_1000, IIR_16);
-      |       ^~~
+In file included from ../Core/Src/main.c:27:
+../Core/Inc/LoRa.h:1:1: warning: multi-line comment [-Wcomment]
+    1 | // -------------------------------------------------- \\
+      | ^
 arm-none-eabi-gcc -o "LCD_test.elf" @"objects.list"   -mcpu=cortex-m4 -T"D:\satelite-prototype\LCD_test\STM32F411VETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="LCD_test.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -u _scanf_float -Wl,--start-group -lc -lm -Wl,--end-group
 Finished building target: LCD_test.elf
  
 arm-none-eabi-size   LCD_test.elf 
 arm-none-eabi-objdump -h -S  LCD_test.elf  > "LCD_test.list"
    text	   data	    bss	    dec	    hex	filename
-  39552	    476	   2228	  42256	   a510	LCD_test.elf
+  35912	    476	   2292	  38680	   9718	LCD_test.elf
 Finished building: default.size.stdout
  
 Finished building: LCD_test.list
  
-16:23:35 **** Incremental Build of configuration Debug for project LCD_test ****
+16:48:29 **** Incremental Build of configuration Debug for project LCD_test ****
 make -j8 all 
 arm-none-eabi-size   LCD_test.elf 
    text	   data	    bss	    dec	    hex	filename
-  39552	    476	   2228	  42256	   a510	LCD_test.elf
+  35912	    476	   2292	  38680	   9718	LCD_test.elf
 Finished building: default.size.stdout
+ 
+16:51:58 **** Incremental Build of configuration Debug for project LCD_test ****
+make -j8 all 
+arm-none-eabi-size   LCD_test.elf 
+   text	   data	    bss	    dec	    hex	filename
+  35912	    476	   2292	  38680	   9718	LCD_test.elf
+Finished building: default.size.stdout
+ 
+16:56:46 **** Incremental Build of configuration Debug for project LCD_test ****
+make -j8 all 
+arm-none-eabi-size   LCD_test.elf 
+   text	   data	    bss	    dec	    hex	filename
+  35912	    476	   2292	  38680	   9718	LCD_test.elf
+Finished building: default.size.stdout
+ 
+16:58:00 **** Incremental Build of configuration Debug for project LCD_test ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+In file included from ../Core/Src/main.c:27:
+../Core/Inc/LoRa.h:1:1: warning: multi-line comment [-Wcomment]
+    1 | // -------------------------------------------------- \\
+      | ^
+arm-none-eabi-gcc -o "LCD_test.elf" @"objects.list"   -mcpu=cortex-m4 -T"D:\satelite-prototype\LCD_test\STM32F411VETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="LCD_test.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -u _scanf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: LCD_test.elf
+ 
+arm-none-eabi-size   LCD_test.elf 
+arm-none-eabi-objdump -h -S  LCD_test.elf  > "LCD_test.list"
+   text	   data	    bss	    dec	    hex	filename
+  35920	    476	   2292	  38688	   9720	LCD_test.elf
+Finished building: default.size.stdout
+ 
+Finished building: LCD_test.list
+ 
+17:01:05 **** Incremental Build of configuration Debug for project LCD_test ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+In file included from ../Core/Src/main.c:27:
+../Core/Inc/LoRa.h:1:1: warning: multi-line comment [-Wcomment]
+    1 | // -------------------------------------------------- \\
+      | ^
+arm-none-eabi-gcc -o "LCD_test.elf" @"objects.list"   -mcpu=cortex-m4 -T"D:\satelite-prototype\LCD_test\STM32F411VETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="LCD_test.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -u _scanf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: LCD_test.elf
+ 
+arm-none-eabi-size   LCD_test.elf 
+arm-none-eabi-objdump -h -S  LCD_test.elf  > "LCD_test.list"
+   text	   data	    bss	    dec	    hex	filename
+  35840	    476	   2292	  38608	   96d0	LCD_test.elf
+Finished building: default.size.stdout
+ 
+Finished building: LCD_test.list
+ 
+17:06:37 **** Incremental Build of configuration Debug for project LCD_test ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+In file included from ../Core/Src/main.c:27:
+../Core/Inc/LoRa.h:1:1: warning: multi-line comment [-Wcomment]
+    1 | // -------------------------------------------------- \\
+      | ^
+arm-none-eabi-gcc -o "LCD_test.elf" @"objects.list"   -mcpu=cortex-m4 -T"D:\satelite-prototype\LCD_test\STM32F411VETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="LCD_test.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -u _scanf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: LCD_test.elf
+ 
+arm-none-eabi-size   LCD_test.elf 
+arm-none-eabi-objdump -h -S  LCD_test.elf  > "LCD_test.list"
+   text	   data	    bss	    dec	    hex	filename
+  35992	    476	   2292	  38760	   9768	LCD_test.elf
+Finished building: default.size.stdout
+ 
+Finished building: LCD_test.list
+ 
+17:17:26 **** Incremental Build of configuration Debug for project LCD_test ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+In file included from ../Core/Src/main.c:27:
+../Core/Inc/LoRa.h:1:1: warning: multi-line comment [-Wcomment]
+    1 | // -------------------------------------------------- \\
+      | ^
+arm-none-eabi-gcc -o "LCD_test.elf" @"objects.list"   -mcpu=cortex-m4 -T"D:\satelite-prototype\LCD_test\STM32F411VETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="LCD_test.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -u _scanf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: LCD_test.elf
+ 
+arm-none-eabi-size   LCD_test.elf 
+arm-none-eabi-objdump -h -S  LCD_test.elf  > "LCD_test.list"
+   text	   data	    bss	    dec	    hex	filename
+  36000	    476	   2292	  38768	   9770	LCD_test.elf
+Finished building: default.size.stdout
+ 
+Finished building: LCD_test.list
+ 
+17:31:12 **** Incremental Build of configuration Debug for project LCD_test ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/LoRa.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/LoRa.d" -MT"Core/Src/LoRa.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/LoRa.o"
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+In file included from ../Core/Src/LoRa.c:1:
+../Core/Inc/LoRa.h:1:1: warning: multi-line comment [-Wcomment]
+    1 | // -------------------------------------------------- \\
+      | ^
+In file included from ../Core/Src/main.c:27:
+../Core/Inc/LoRa.h:1:1: warning: multi-line comment [-Wcomment]
+    1 | // -------------------------------------------------- \\
+      | ^
+arm-none-eabi-gcc -o "LCD_test.elf" @"objects.list"   -mcpu=cortex-m4 -T"D:\satelite-prototype\LCD_test\STM32F411VETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="LCD_test.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -u _scanf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: LCD_test.elf
+ 
+arm-none-eabi-size   LCD_test.elf 
+arm-none-eabi-objdump -h -S  LCD_test.elf  > "LCD_test.list"
+   text	   data	    bss	    dec	    hex	filename
+  36008	    476	   2292	  38776	   9778	LCD_test.elf
+Finished building: default.size.stdout
+ 
+Finished building: LCD_test.list
  

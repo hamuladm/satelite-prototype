@@ -1,10 +1,26 @@
-16:23:35 **** Incremental Build of configuration Debug for project LCD_test ****
+17:31:12 **** Incremental Build of configuration Debug for project LCD_test ****
 make -j8 all 
+arm-none-eabi-gcc "../Core/Src/LoRa.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/LoRa.d" -MT"Core/Src/LoRa.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/LoRa.o"
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+In file included from ../Core/Src/LoRa.c:1:
+../Core/Inc/LoRa.h:1:1: warning: multi-line comment [-Wcomment]
+    1 | // -------------------------------------------------- \\
+      | ^
+In file included from ../Core/Src/main.c:27:
+../Core/Inc/LoRa.h:1:1: warning: multi-line comment [-Wcomment]
+    1 | // -------------------------------------------------- \\
+      | ^
+arm-none-eabi-gcc -o "LCD_test.elf" @"objects.list"   -mcpu=cortex-m4 -T"D:\satelite-prototype\LCD_test\STM32F411VETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="LCD_test.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -u _scanf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: LCD_test.elf
+ 
 arm-none-eabi-size   LCD_test.elf 
+arm-none-eabi-objdump -h -S  LCD_test.elf  > "LCD_test.list"
    text	   data	    bss	    dec	    hex	filename
-  39552	    476	   2228	  42256	   a510	LCD_test.elf
+  36008	    476	   2292	  38776	   9778	LCD_test.elf
 Finished building: default.size.stdout
  
+Finished building: LCD_test.list
+ 
 
-16:23:35 Build Finished. 0 errors, 0 warnings. (took 476ms)
+17:31:14 Build Finished. 0 errors, 2 warnings. (took 2s.684ms)
 
