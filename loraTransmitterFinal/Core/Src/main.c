@@ -128,7 +128,7 @@ int main(void)
 	  	HAL_Delay(1000);
 
 		BMP280_Measure();
-		temp = (uint8_t) Temperature;
+		temp = (uint8_t) (Temperature + 73);
 		pres = (uint8_t) (Pressure/1000);
 		data[0] = temp;
 		data[1] = pres;

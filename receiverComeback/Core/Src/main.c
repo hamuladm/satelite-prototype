@@ -47,6 +47,8 @@
 LoRa myLoRa;
 int status = 0;
 uint8_t data[2];
+int temperature = 0;
+int pressure = 0;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -119,6 +121,8 @@ int main(void)
 		  LoRa_receive(&myLoRa, data, 2);
 		  HAL_GPIO_TogglePin(GPIOD, GPIO_PIN_14);
 		  HAL_Delay(1000);
+		  temperature = (int)data[0] + 200;
+		  pressure = (int)data[1];
 	  }
     /* USER CODE END WHILE */
 
