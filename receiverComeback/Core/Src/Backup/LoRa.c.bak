@@ -443,6 +443,7 @@ uint8_t LoRa_receive(LoRa* _LoRa, uint8_t* data, uint8_t length){
 	LoRa_gotoMode(_LoRa, STNBY_MODE);
 	read = LoRa_read(_LoRa, RegIrqFlags);
 	if((read & 0x40) != 0){
+		HAL_GPIO_TogglePin(GPIOD, GPIO_PIN_15);
 		LoRa_write(_LoRa, RegIrqFlags, 0xFF);
 		number_of_bytes = LoRa_read(_LoRa, RegRxNbBytes);
 		read = LoRa_read(_LoRa, RegFiFoRxCurrentAddr);

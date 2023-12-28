@@ -383,7 +383,7 @@ uint8_t LoRa_transmit(LoRa* _LoRa, uint8_t* data, uint8_t length, uint16_t timeo
 		}
 		else{
 			if(--timeout==0){
-				HAL_GPIO_TogglePin(GPIOD, GPIO_PIN_15);
+				HAL_GPIO_TogglePin(GPIOD, GPIO_PIN_13);
 				LoRa_gotoMode(_LoRa, mode);
 				return 0;
 			}

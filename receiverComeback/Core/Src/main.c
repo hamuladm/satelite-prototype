@@ -46,11 +46,7 @@
 /* USER CODE BEGIN PV */
 LoRa myLoRa;
 int status = 0;
-uint8_t data;
-uint8_t tempHistory[50];
-uint8_t pressureHistory[50];
-int tempCounter = 0;
-int pressureCounter = 0;
+uint8_t data[2];
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -108,10 +104,10 @@ int main(void)
 	  	  HAL_GPIO_TogglePin(GPIOD, GPIO_PIN_13);
 	  } else {
 	  	  status = 1;
-	  	  LoRa_startReceiving(&myLoRa);
 	  }
 	  HAL_Delay(15);
   }
+  LoRa_startReceiving(&myLoRa);
 
   /* USER CODE END 2 */
 
@@ -120,18 +116,9 @@ int main(void)
   while (1)
   {
 	  if (status) {
-		  LoRa_receive(&myLoRa, &data, 1);
+		  LoRa_receive(&myLoRa, data, 2);
 		  HAL_GPIO_TogglePin(GPIOD, GPIO_PIN_14);
-		  HAL_Delay(250);
-		  if (data<=30) {
-			  tempHistory[tempCounter] = data;
-			  tempCounter++;
-			  tempCounter = tempCounter > 49 ? 0 : tempCounter;
-		  } else {
-			  pressureHistory[pressureCounter] = data;
-			  pressureCounter++;
-			  pressureCounter = pressureCounter > 49 ? 0 : pressureCounter;
-		  }
+		  HAL_Delay(1000);
 	  }
     /* USER CODE END WHILE */
 

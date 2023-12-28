@@ -20,11 +20,10 @@
 #include "main.h"
 #include "spi.h"
 #include "gpio.h"
-#include "LoRa.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "LoRa.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -47,7 +46,7 @@
 /* USER CODE BEGIN PV */
 LoRa myLoRa;
 int status = 0;
-uint8_t data[2];
+uint8_t data;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -100,12 +99,16 @@ int main(void)
   myLoRa.DIO0_pin        = DIO0_Pin;
   myLoRa.hSPIx           = &hspi1;
   HAL_Delay(10);
-  if (LoRa_init(&myLoRa) != LORA_OK) {
-	  HAL_GPIO_TogglePin(GPIOD, GPIO_PIN_13);
-  } else {
-	  status = 1;
-	  LoRa_startReceiving(&myLoRa);
+  while (status != 1) {
+	  if (LoRa_init(&myLoRa) != LORA_OK) {
+	  	  HAL_GPIO_TogglePin(GPIOD, GPIO_PIN_13);
+	  } else {
+	  	  status = 1;
+	  }
+	  HAL_Delay(15);
   }
+  LoRa_startReceiving(&myLoRa);
+
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -113,7 +116,7 @@ int main(void)
   while (1)
   {
 	  if (status) {
-		  LoRa_receive(&myLoRa, data, 2);
+		  LoRa_receive(&myLoRa, &data, 1);
 		  HAL_GPIO_TogglePin(GPIOD, GPIO_PIN_14);
 		  HAL_Delay(1000);
 	  }
